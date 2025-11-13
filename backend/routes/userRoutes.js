@@ -10,13 +10,15 @@ const {
 
 const userRoutes = Router();
 
-//const verifyToken = require("../middlware/verifyToken");
+const verifytoken = require("../middleware/verifytoken");
+
+const autozarAdmin = require("../middleware/autorizeAdmin.js")
 
 userRoutes.get("/", getUserHandler);
 userRoutes.get("/:id", getUserByIdHandler);
 userRoutes.post("/", createUserHandler);
 userRoutes.put("/:id",putUserHandler);
-userRoutes.delete("/:id",deleteUserHandler);
+userRoutes.delete("/:id",verifytoken,autozarAdmin,deleteUserHandler);
 
 //userRoutes.post("/surg", createSugerencia);
 

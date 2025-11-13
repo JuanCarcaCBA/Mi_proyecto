@@ -14,7 +14,7 @@ function App() {
           
           <Route path="/suscripciones" element={<Suscripciones />} />
           
-          {/* Mantener la redirección para el HTML estático */}
+          {}
           <Route path="/inscribirme.html" element={<a href="/inscribirme.html">Ir a Contacto</a>} />
         </Routes>
       </div>
@@ -23,5 +23,26 @@ function App() {
     </BrowserRouter>
   );
 }
+
+// const App = () =>{
+//   const [isAutheticated, serIsAuthenticated] = useState(
+//     !!localStorage.getItem("token")
+//   );
+//   return(
+//     <div>
+//       {isAutheticated ? (
+//         <Profile serIsAuthenticated = {serIsAuthenticated} />
+//       ) : (
+//       <>
+//       <h2>Deseas registrarte o iniciar sescion?</h2>
+//       <Register serIsAuthenticated={serIsAuthenticated} />
+//       <Login serIsAuthenticated = {serIsAuthenticated} />
+//       </>
+//     )}
+
+//     </div>
+//   )
+// }
+
 
 export default App;

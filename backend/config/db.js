@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Cargar variables de entorno (si usas un archivo .env)
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/ProyectoFinal';
+const MONGO_URI = 'mongodb://localhost:27017/proyecto';
 
 const connectDB = async () => {
     try {

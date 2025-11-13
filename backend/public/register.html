@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse | Tecnología Diaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css"> 
+    <style>
+        .form-signup {
+            max-width: 500px;
+            padding: 15px;
+            margin: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .alert-fixed {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg bg-danger navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="./index.html">Tecnología Diaria</a>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <main class="form-signup">
+            <h1 class="h3 mb-3 fw-normal text-center">Crear una Cuenta</h1>
+            <div id="alertMessage" class="alert-fixed d-none"></div>
+
+            <form id="registerForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="name" name="name" value="Dani" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="userName" class="form-label">Nombre de Usuario</label>
+                        <input type="text" class="form-control" id="userName" name="userName" value="Dani01" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" name="email" value="Dani@correo.com" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" value="1234" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="role" class="form-label">Rol (admin, user, etc.)</label>
+                    <select class="form-select" id="role" name="role" required>
+                        <option value="user">User</option>
+                        <option value="admin" selected>Admin</option>
+                        <option value="leader">Leader</option>
+                    </select>
+                </div>
+
+                <button class="w-100 btn btn-lg btn-danger mt-3" type="submit">Registrar Cuenta</button>
+            </form>
+            <p class="mt-3 mb-0 text-center text-muted">¿Ya tienes cuenta? <a href="./login.html">Inicia Sesión</a></p>
+
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            const alertContainer = document.getElementById('alertMessage');
+            alertContainer.classList.add('d-none');
+            alertContainer.innerHTML = '';
+
+            try {
+                const response = await fetch('/api/auth/register', { 
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+
+                    showAlert('Registro exitoso. ¡Ahora puedes iniciar sesión!', 'alert-success');
+
+                    setTimeout(() => {
+                         window.location.href = './login.html'; 
+                    }, 2000);
+
+                } else {
+
+                    const errorMessage = result.error || (result.details && result.details[0].message) || 'Error al registrar el usuario.';
+                    showAlert(errorMessage, 'alert-danger');
+                }
+            } catch (error) {
+                console.error('Error de red o del servidor:', error);
+                showAlert('Error de conexión con el servidor. Intenta de nuevo.', 'alert-danger');
+            }
+        });
+
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alertMessage');
+            alertContainer.innerHTML = message;
+            alertContainer.className = `alert ${type} alert-dismissible fade show alert-fixed`;
+            alertContainer.setAttribute('role', 'alert');
+            alertContainer.classList.remove('d-none');
+            
+ 
+            setTimeout(() => {
+                alertContainer.classList.add('d-none');
+            }, 5000);
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:backend": "nodemon index.js",
     "dev:frontend": "npm run dev --prefix frontend",
-    "dev:fullstack": "concurrently --kill-others \"npm run dev:frontend\" \"npm run dev:backend\""
+    "fullstack": "concurrently --kill-others \"npm run dev:frontend\" \"npm run dev:backend\""
   },
   "keywords": [
     "Node",

@@ -20,6 +20,7 @@ mainRoutes.use("/auth", authRoutes);
 mainRoutes.use("/user", userRoutes);
 mainRoutes.use("/sugerencias", sugerenciasRoutes);
 
+
 //mainRoutes.use("/post",postRoutes)
 
 module.exports = mainRoutes;
