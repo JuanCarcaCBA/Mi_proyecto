@@ -5,21 +5,17 @@ const userRoutes = require("./userRoutes");
 //const postRoutes = require('./postRoutes')
 const mainRoutes = Router();
 
-//const { getSugerHandler } = require("../handlers/sugerciasHandlersDB"); 
-
-//const sugerencias = require("./sugerencias")
+const { getSugerHandlerDB } = require("../handlers/sugerciasHandlersDB"); 
 
 const authRoutes = require("./authRoutes")
 const sugerenciasRoutes = require("./sugerenciasRoutes")
-const { getSugerHandlerDB } = require("../handlers/sugerciasHandlersDB");
+//const sugeRoutes = require("./sugeRoutesDB");
 
-//mainRoutes.get("/suge", sugerencias);
 mainRoutes.get("/suge", getSugerHandlerDB);
 mainRoutes.use("/auth", authRoutes);
 
 mainRoutes.use("/user", userRoutes);
 mainRoutes.use("/sugerencias", sugerenciasRoutes);
-
 
 //mainRoutes.use("/post",postRoutes)
 

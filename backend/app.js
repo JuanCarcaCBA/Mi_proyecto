@@ -1,4 +1,3 @@
-// backend/app.js (VERSIÓN CORREGIDA)
 const express = require("express");
 const mainRoutes = require("./routes/mainRoutes");
 const app = express();

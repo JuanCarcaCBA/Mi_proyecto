@@ -1,7 +1,6 @@
 const { sugerencias } = require("../db/dataBase");
 
 const registrarController = (name, descrip,tipo) => {
-  console.log("crear una sugerencia controller");
   if (!name || !descrip) throw new Error();
   const id = sugerencias.length + 1;
   const fechaCrea = Date();
@@ -11,7 +10,6 @@ const registrarController = (name, descrip,tipo) => {
 };
 
 const getAllSugerController = () => {
-    console.log("Get todas las sugerencias")
   return sugerencias;
 };
 

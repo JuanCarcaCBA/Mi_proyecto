@@ -1,6 +1,6 @@
 
 //const sugerencia = require ("../routes/sugerencias")
-const { registrarController, getAllSugerController } = require("../controllers/sugeControllerDB");
+const { registrarControllerDB, getAllSugerControllerDB } = require("../controllers/sugeControllerDB");
 
 const registerHandlerDB = async (req, res) => {
   console.log("➡️ INICIO - Handler de Registro (POST /api/suge)");
@@ -10,7 +10,7 @@ const registerHandlerDB = async (req, res) => {
     const { Nombre, Descripcion, Categoria } = req.body;
     
 
-    const newSuge = await registrarController(Nombre, Descripcion, Categoria);
+    const newSuge = await registrarControllerDB(Nombre, Descripcion, Categoria);
     console.log("⬅️ FIN - Registro exitoso. Enviando respuesta 201."); 
     res.status(201).send(newSuge);
   } catch (error) {
@@ -24,12 +24,11 @@ const getSugerHandlerDB = async (req, res) => {
   try {
     console.log("handler traer todas las sugerencias 2");
     
-    const allSuger = await getAllSugerController(); 
+    const allSuger = await getAllSugerControllerDB(); 
     
     if (allSuger.length) {
     console.log("⬅️ FIN - Get exitoso. Enviando respuesta 201."); 
-
-      res.status(200).send(allSuger); 
+    res.status(200).send(allSuger); 
     } else {
     console.error("❌ FALLO 404 en registerHandlerDB. Error:", error.message); 
 

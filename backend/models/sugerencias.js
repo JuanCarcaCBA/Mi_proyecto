@@ -21,6 +21,4 @@ const SugerenciaSchema = new mongoose.Schema({
 
 const sugerencia = mongoose.model('sugerencia', SugerenciaSchema);
 
-console.log("Coleccion")
-console.log(sugerencia)
 module.exports = sugerencia;
