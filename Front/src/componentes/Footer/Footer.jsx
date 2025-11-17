@@ -6,7 +6,7 @@ export default function Footer(){
 return (
 <footer className={`py-3 ${styles.footer}`}>
 <div className="container text-center">
-<small>© {new Date().getFullYear()} - MiProyecto JUAN</small>
+<p>© {new Date().getFullYear()} - Todos los derechos reservados</p>
 </div>
 </footer>
 )

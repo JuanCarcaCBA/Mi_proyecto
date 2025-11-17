@@ -1,4 +1,60 @@
-.home{
-display:flex;
-gap:1rem;
+
+.titulo-principal {
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-size: 2.8em;
+    color: #1a2a47;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    padding-bottom: 0.5em;
+    border-bottom: 3px solid #3498db;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.subtitulo-seccion {
+    font-size: 1.5em; /* Original de index.html */
+    color: #2c3e50;
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+    position: relative;
+    padding-left: 40px;
+}
+
+/* Iconografía para subtítulos de index.html (se mantiene la estructura) */
+
+.subtitulo-seccion::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 4px;
+    background-color: #3498db;
+    border-radius: 2px;
+}
+/* Se sobrescribe el ::before general para el estilo específico de "Y vos?" */
+.icono-vos::after {
+    content: '📝';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+}
+.icono-vos::before {
+    content: none; /* Elimina la línea azul del estilo general h2 */
+}
+
+/* Estilos de Tags de index.html */
+.tag {
+    background-color: #efd5d5; /* Color del index.html */
+    color: #000000;
+    padding: 0.3em 0.7em;
+    border-radius: 7px;
+    font-size: 0.95em;
+    margin-right: 0.6em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
