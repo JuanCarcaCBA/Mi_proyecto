@@ -1,3 +1,73 @@
-.about{ 
-    color:black
+/* Perfil y Mascotas */
+
+.fotoPerfil {
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.fotoPerfil:hover {
+    transform: rotate(2deg) scale(1.10);
+}
+
+.imagenMascota {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.imagenMascota:hover {
+    transform: scale(1.10);
+}
+.articuloProyecto {
+    background-color: #ffffff !important; 
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(132, 19, 19, 0.697);
+}
+
+.parrafoProyecto, .nombreMascota { 
+    caption-side: top;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.6;
+}
+
+.contenedorMascotas {
+    overflow: auto;
+}
+
+.enlaceClima {
+    display: inline-block;
+}
+.iconoClima {
+    width:50px; 
+    height:50px; 
+    border:none; 
+    cursor:pointer;
+}
+
+.mapaUbicacion {
+    border: 1px solid #ccc;
+    max-width: 100%;
+    height: auto;
+}
+
+.botonVolver {
+    margin-top: 20px;
+}
+
+.tituloSeccion {
+    font-size: 2em; 
+    color: #2c3e50;
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+    position: relative;
+    padding-left: 40px;
 }

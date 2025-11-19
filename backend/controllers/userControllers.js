@@ -1,4 +1,9 @@
-const {users} = require("../db/dataBase.js");
+//const {users} = require("../db/dataBase.js");
+
+const users = require("../models/user");
+//const Sugerencia = require("../handlers/sugerciasHandlersDB");
+
+
 
 const createUserController = (name, userName, email) => {
   console.log("User controler Body recibido");
@@ -16,8 +21,8 @@ const createUserController = (name, userName, email) => {
 };
 
 const getAllUserController = () => {
-  if (!users.length) throw new Error();
-  return users;
+    const users = users.find({});
+    return users;
 };
 
 const getUserByNameController = (name) => {

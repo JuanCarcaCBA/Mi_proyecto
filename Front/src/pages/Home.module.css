@@ -1,5 +1,4 @@
-
-.titulo-principal {
+.tituloPrincipal {
     text-align: center;
     margin-bottom: 1.5em;
     font-size: 2.8em;
@@ -13,8 +12,8 @@
     transform: translateX(-50%);
 }
 
-.subtitulo-seccion {
-    font-size: 1.5em; /* Original de index.html */
+.subtituloSeccion {
+    font-size: 1.5em;
     color: #2c3e50;
     margin-top: 2.5em;
     margin-bottom: 1em;
@@ -22,9 +21,7 @@
     padding-left: 40px;
 }
 
-/* Iconografía para subtítulos de index.html (se mantiene la estructura) */
-
-.subtitulo-seccion::before {
+.subtituloSeccion::before {
     content: "";
     position: absolute;
     left: 0;
@@ -35,26 +32,73 @@
     background-color: #3498db;
     border-radius: 2px;
 }
-/* Se sobrescribe el ::before general para el estilo específico de "Y vos?" */
-.icono-vos::after {
-    content: '📝';
+
+.subtituloSeccion::after {
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.5em;
-}
-.icono-vos::before {
-    content: none; /* Elimina la línea azul del estilo general h2 */
+    font-size: 1.2em; /* TAMAÑO AJUSTADO para EMOJIS */
+    color: #6b47ff; /* Color de acento para los iconos */
+    line-height: 1;
 }
 
-/* Estilos de Tags de index.html */
+.iconoOrganizacion::after { content: '🧭'; }
+.iconoHabitos::after      { content: '🧠'; }
+.iconoDeporte::after      { content: '🏃‍♂️'; }
+.iconoTiempoLibre::after  { content: '🎧'; }
+.iconoAutomatizacion::after { content: '🛠️'; }
+.iconoVos::after          { content: '✍️'; }
+
+.iconoVos::before {
+    content: none;
+}
+
+.home ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 2em;
+}
+
+.home li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 1em;
+    font-size: 1.05em;
+    color: #444;
+}
+
+.home li::before {
+    content: '✅';
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+    font-size: 1em;
+}
+
+.home strong {
+    color: #1a2a47;
+}
+
 .tag {
-    background-color: #efd5d5; /* Color del index.html */
+    background-color: #efd5d5;
     color: #000000;
     padding: 0.3em 0.7em;
     border-radius: 7px;
     font-size: 0.95em;
     margin-right: 0.6em;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.resultado {
+    display: block;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-top: 1.5em;
+    margin-bottom: 2.5em;
+    font-style: normal;
+    font-weight: 600;
+    border-left: 5px solid #4CAF50;
 }

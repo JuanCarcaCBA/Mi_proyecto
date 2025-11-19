@@ -1,0 +1,64 @@
+/* Estilo para el título principal de la sección */
+.tituloPrincipal {
+    text-align: center;
+    font-size: 2.5em;
+    color: #1a2a47; /* Un color oscuro elegante */
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db; /* Línea de color azul */
+    display: inline-block;
+}
+
+/* Contenedor principal de la sección */
+.suscripcionesContainer {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* Estilo para el mensaje de carga */
+.loadingMessage {
+    font-size: 1.8em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el contenedor del Spinner (para dar espacio) */
+.spinnerContainer {
+    padding: 30px;
+}
+
+/* Sobrescribir el color y tamaño del spinner de Bootstrap */
+.customSpinner {
+    width: 4rem;
+    height: 4rem;
+    border-width: 0.4rem;
+    color: #e74c3c !important; /* Usamos un rojo fuerte para destacar la carga */
+}
+
+/* Estilo para el mensaje de error */
+.errorMessage {
+    border: 2px solid #e74c3c;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+/* Contenedor de las tarjetas para un diseño más limpio si es necesario */
+.cardsRow {
+    /* Si deseas espacio extra entre la fila de tarjetas */
+    margin-top: 15px;
+}
+
+/* Estilo para el div que envuelve cada Card */
+.cardWrapper {
+    /* Puedes añadir efectos sutiles aquí */
+    transition: transform 0.3s ease-in-out;
+}
+
+.cardWrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}

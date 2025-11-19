@@ -16,7 +16,7 @@ const SugerenciaSchema = new mongoose.Schema({
     }
 }, {
     
-    collection: 'sugerencias' 
+    collection: 'suscripciones' 
 });
 
 const sugerencia = mongoose.model('sugerencia', SugerenciaSchema);

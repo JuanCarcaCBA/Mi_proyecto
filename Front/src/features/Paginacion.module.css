@@ -1,0 +1,41 @@
+.paginacionContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+    padding: 15px 0;
+}
+
+.pageButton {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    color: #333;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    font-weight: 500;
+}
+
+.pageButton:hover:not(:disabled) {
+    background-color: #f0f0f0;
+    border-color: #aaa;
+}
+
+.pageButton:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.6;
+    background-color: #eee;
+}
+
+.activeButton {
+    background-color: #007bff; /* Azul de Bootstrap */
+    color: white;
+    border-color: #007bff;
+    font-weight: bold;
+}
+
+.activeButton:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}

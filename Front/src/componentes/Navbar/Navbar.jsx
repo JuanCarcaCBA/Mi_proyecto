@@ -12,6 +12,7 @@ export default function Navbar(){
             <li className="nav-item"><NavLink className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'} to="/">Inicio</NavLink></li>
             <li className="nav-item"><NavLink className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'} to="/users">Usuarios</NavLink></li>
             <li className="nav-item"><NavLink className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'} to="/sugerencias">Sugerencias</NavLink></li>
+            <li className="nav-item"><NavLink className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'} to="/suscripciones">suscripciones</NavLink></li>
             <li className="nav-item"><NavLink className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'} to="/about">Sobre mi</NavLink></li>
           </ul>
         </div>
