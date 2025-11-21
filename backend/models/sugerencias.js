@@ -1,24 +1,20 @@
 
 const mongoose = require('mongoose');
+
 const SugerenciaSchema = new mongoose.Schema({
     
-    Nombre: {
-        type: String,
-        required: true,
-        trim: true,
+    id: { 
+        type: Number,
+        unique: true, 
     },
-    Descripcion: { 
-        type: String,
-        required: true,
-    },
-    Categoria: {
+    categoria: {
         type: String,
     }
 }, {
     
-    collection: 'suscripciones' 
+    collection: 'sugerencias' 
 });
 
-const sugerencia = mongoose.model('sugerencia', SugerenciaSchema);
+const Sugerencia = mongoose.models.sugerencia || mongoose.model('sugerencia', SugerenciaSchema);
 
-module.exports = sugerencia;
+module.exports = Sugerencia;

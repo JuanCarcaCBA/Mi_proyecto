@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 
-// Ejemplo: se usa fetch contra JSONPlaceholder, se puede cambiar la URL
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
-const res = await fetch('https://jsonplaceholder.typicode.com/users')
-if(!res.ok) throw new Error('Error fetching users')
-return res.json()
+    // La ruta de tu API es http://localhost:3000/api/user
+    const res = await fetch('http://localhost:3000/api/user') 
+    
+    if(!res.ok) throw new Error('Error fetching users')
+    return res.json()
 })
 
 

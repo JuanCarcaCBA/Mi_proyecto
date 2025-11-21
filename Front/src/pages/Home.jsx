@@ -1,18 +1,29 @@
 import React from 'react'
 import styles from './Home.module.css'
+import AuthModal from '../componentes/Auth/AuthModal'; 
 
 
 export default function Home(){
 return (
     <section className={styles.home}>
-        <div className="p-4 bg-white rounded shadow-sm">
-            <h1 className="mb-2">🤖 Ingeniería y Eficiencia: IA Aplicada a la Vida Diaria</h1>
-            <p className="mb-0">Vivimos rodeados de tecnología, pero lo importante no es cuánto usamos, sino cómo la usamos. Como Ingeniero en Sistemas, mi foco está en la eficiencia y la automatización (con Power Automate, Python, etc.). Hoy, la Inteligencia Artificial es la herramienta clave para llevar el bienestar, la productividad y mis pasiones al siguiente nivel. Acá comparto cómo aplicar soluciones de IA y automatización en el día a día.</p>
-        </div>
+<div className="p-4 bg-white rounded shadow-sm d-flex justify-content-between align-items-center">
+                <h1 className="mb-0">🤖 Ingeniería y Eficiencia: IA Aplicada a la Vida Diaria</h1>
+                <button 
+                    className="btn btn-success" // Un botón visible
+                    onClick={handleOpen}
+                >
+                    Login / Register
+                </button>
+            </div>
+            
+            {/* ... Contenido existente de Home.jsx ... */}
+            <div className="p-4 bg-white rounded shadow-sm">
+                <p className="mb-0">Vivimos rodeados de tecnología, pero lo importante no es cuánto usamos, sino cómo la usamos. Como Ingeniero en Sistemas, mi foco está en la eficiencia y la automatización (con Power Automate, Python, etc.). Hoy, la Inteligencia Artificial es la herramienta clave para llevar el bienestar, la productividad y mis pasiones al siguiente nivel. Acá comparto cómo aplicar soluciones de IA y automatización en el día a día.</p>
+            </div>
 
-        <h2 className={`${styles.subtituloSeccion} ${styles.iconoOrganizacion}`}> 
-            Organización Personal y Profesional con IA
-        </h2>
+<h2 className={`${styles.subtituloSeccion} ${styles.iconoOrganizacion}`}> 
+                Organización Personal y Profesional con IA
+            </h2>
         <ul>
             <li>
                 <strong>El desafío:</strong> No solo registrar, sino <strong>priorizar</strong> automáticamente. Utilizo scripts en <span className={styles.tag}>Python</span> para analizar la urgencia de tareas en <span className={styles.tag}>Jira</span> o <span className={styles.tag}>Trello</span>.

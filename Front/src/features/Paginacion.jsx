@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Paginacion.module.css'; // ⬅️ 1. Importar estilos
+import styles from './Paginacion.module.css'; 
 
 export default function Paginacion({
     productosPorPagina,
@@ -29,13 +29,13 @@ export default function Paginacion({
     const paginaEspecifica = (num) => setPaginaActual(num);
 
     return (
-        // ⬅️ 2. Aplicar el contenedor de estilos
+      
         <div className={styles.paginacionContainer}>
             
             <button 
                 onClick={paginaAnterior} 
                 disabled={paginaActual === 1}
-                className={styles.pageButton} // ⬅️ 3. Aplicar clase base
+                className={styles.pageButton} 
             >
                 Anterior
             </button>
@@ -45,7 +45,7 @@ export default function Paginacion({
                     key={number}
                     onClick={() => paginaEspecifica(number)}
                     className={`${styles.pageButton} ${ 
-                        number === paginaActual ? styles.activeButton : '' // ⬅️ 4. Aplicar clase activa
+                        number === paginaActual ? styles.activeButton : '' 
                     }`}
                 >
                     {number}
@@ -55,7 +55,7 @@ export default function Paginacion({
             <button 
                 onClick={paginaSiguiente} 
                 disabled={paginaActual === totalPaginas}
-                className={styles.pageButton} // ⬅️ 5. Aplicar clase base
+                className={styles.pageButton} 
             >
                 Siguiente
             </button>

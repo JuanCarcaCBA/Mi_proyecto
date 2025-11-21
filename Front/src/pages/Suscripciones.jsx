@@ -1,54 +1,58 @@
 import React, { useState, useEffect } from "react";
-import Card from "../componentes/Card";
-import Paginacion from '../features/Paginacion'; // ⬅️ 1. Importar Paginacion
+import { Link } from 'react-router-dom';
+import Card from "../componentes/Card"; 
+import Paginacion from '../features/Paginacion'; 
 import styles from './Suscripciones.module.css';
 
-// GENERODE DATOS ALEATORIOS 
-const generateProducts = (count) => {
-  return Array.from({ length: count }, (_, i) => ({
-    id: i + 1,
-    title: `Suscripción Premium ${i + 1}`,
-    price: (Math.random() * 100).toFixed(2), 
-  }));
-};
+// ❌ Se elimina la función generateProducts
+// const generateProducts = (count) => { ... };
+
+// 💡 URL DE LA API: Asumimos puerto 3000 con el prefijo /api, 
+// ajusta si tu backend usa otra configuración.
+const API_URL = "http://localhost:3000/api/suge"; 
 
 function Suscripciones() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);  
   
-
   const [paginaActual, setPaginaActual] = useState(1);
   const [productosPorPagina] = useState(9); 
 
+  // 💡 NUEVA LÓGICA DE FETCH
   useEffect(() => {
-    const loadLocalProducts = () => {
+    const fetchSuscripciones = async () => {
       try {
         setLoading(true);
         setError(null);
-        
 
-        const allProducts = generateProducts(30); 
+        const res = await fetch(API_URL);
         
-        setTimeout(() => {
-            setProducts(allProducts);
-            setLoading(false);
-        }, 500); 
+        // Manejo de errores HTTP (ej: 404, 500)
+        if (!res.ok) {
+            throw new Error(`Error al cargar datos: ${res.status} ${res.statusText}`);
+        }
+        
+        const data = await res.json();
+        
+        // 💡 Importante: La data debe ser un array de suscripciones
+        setProducts(data); 
 
       } catch (err) {
-        console.error("Error al generar productos locales:", err);
-        setError("Error al generar datos locales para simulación.");
+        console.error("Error al obtener suscripciones:", err);
+        setError(err.message || "Error al conectar con la API.");
+      } finally {
         setLoading(false);
       }
     };
 
-    loadLocalProducts();
+    fetchSuscripciones();
+    
   }, []); 
 
-  // ⬅️ 3. LÓGICA DE CORTE PARA LA PÁGINA ACTUAL
+  // Lógica de Paginación (Corte de array)
   const indexOfLastProduct = paginaActual * productosPorPagina;
   const indexOfFirstProduct = indexOfLastProduct - productosPorPagina;
-  // Obtenemos solo los productos que deben mostrarse en esta página
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
 
@@ -72,16 +76,20 @@ function Suscripciones() {
     <div className={`container ${styles.suscripcionesContainer}`}>
       <h1 className={`my-4 ${styles.tituloPrincipal}`}>Planes de Suscripción ({products.length})</h1>
       
-      {/* ⬅️ 4. Renderizamos SOLO los productos de la página actual */}
+      {/* Renderizamos solo los productos de la página actual */}
       <div className={`row ${styles.cardsRow}`}>
         {currentProducts.map(product => ( 
-          <div className={`col-md-4 mb-4 ${styles.cardWrapper}`} key={product.id}> 
-            <Card productData={product} /> 
+          <div className={`col-md-4 mb-4 ${styles.cardWrapper}`} key={product._id}> {/* Usamos _id de MongoDB */}
+            {/* Pasamos solo el ID y los datos limitados para la card */}
+            <Card 
+              id={product._id} 
+              nombre={product.Nombre} 
+              precio={product.Precio}
+            /> 
           </div>
         ))}
       </div>
       
-      {/* ⬅️ 5. Incluimos el componente de Paginación */}
       {products.length > productosPorPagina && (
         <Paginacion
           productosPorPagina={productosPorPagina}

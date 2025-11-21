@@ -1,20 +1,21 @@
-import styles from './Card.module.css';
+import React from 'react';
+import { Link } from 'react-router-dom'; // Necesario para el botón Detalle
 
-function Card({ productData }) {
-if (!productData) {
-    return null;
-  }
-  
-  const { title, price } = productData;
-
-  return (
-    <div className={`card shadow-sm ${styles.customCard}`}>
-      <div className="card-body">
-        <h5 className="card-title">{title}</h5>
-        <p className="card-text text-success">${price}</p>
-        <button type="button" className="btn btn-warning">Detalle</button>
-      </div>
-    </div>
-  )
+export default function Card({ id, nombre, precio }) {
+    return (
+        <div className="card h-100 shadow-sm">
+            <div className="card-body">
+                <h5 className="card-title">{nombre}</h5>
+                <p className="card-text">
+                    <strong>Precio:</strong> ${precio}
+                </p>
+            </div>
+            <div className="card-footer bg-transparent border-top-0">
+                {/* 💡 Enlace al detalle, usando el _id de MongoDB */}
+                <Link to={`/suscripciones/${id}`} className="btn btn-primary">
+                    Detalle
+                </Link>
+            </div>
+        </div>
+    );
 }
-export default Card

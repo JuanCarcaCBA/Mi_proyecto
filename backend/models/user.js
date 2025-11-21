@@ -13,12 +13,19 @@ const UserSchema = new mongoose.Schema({
     },
     role: {
         type: String,
+    },
+    password: {
+        type: String,
+        required: true,
+        select: false, 
     }
+    
+}, {
 }, {
     
-    collection: 'sugerencias' 
+    collection: 'usuarios' 
 });
 
-const user = mongoose.model('user', UserSchema);
+const User = mongoose.models.User || mongoose.model('User', UserSchema);
 
-module.exports = user;
+module.exports = User;

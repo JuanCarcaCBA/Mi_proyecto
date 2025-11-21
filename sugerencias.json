@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "categoria": "Liderazgo y Estrategia",
+    "idea_ia": "Análisis predictivo de riesgo en proyectos basado en datos históricos de avance, retrasos y variables externas para toma de decisiones.",
+    "herramienta_ejemplo": "Python (Pandas/Scikit-learn) integrado con Drive o sistemas de gestión de proyectos."
+  },
+  {
+    "id": 2,
+    "categoria": "Productividad y Automatización",
+    "idea_ia": "Clasificación automática de correos entrantes (spam, urgentes, informativos) y redacción de borradores de respuesta.",
+    "herramienta_ejemplo": "**Power Automate** o Zapier utilizando servicios de IA como Azure OpenAI o Google Gemini."
+  },
+  {
+    "id": 3,
+    "categoria": "Desarrollo Personal y Aprendizaje",
+    "idea_ia": "Generación de resúmenes de documentación técnica (APIs, manuales) y creación de 'flashcards' personalizadas para estudio de JavaScript o Python.",
+    "herramienta_ejemplo": "ChatGPT / Google Gemini (usando función de resumen y estructuración)."
+  },
+  {
+    "id": 4,
+    "categoria": "Gestión de Sistemas",
+    "idea_ia": "Monitoreo inteligente de logs y tickets de **SAP HCM** para identificar patrones de fallas recurrentes y sugerir soluciones preventivas.",
+    "herramienta_ejemplo": "Algoritmos de *Clustering* o *Detección de Anomalías* con Python."
+  },
+  {
+    "id": 5,
+    "categoria": "Hogar y Organización",
+    "idea_ia": "Planificador de comidas y lista de compras basado en inventario de stock (fotos de alacena/heladera), preferencias dietéticas y ofertas de supermercados.",
+    "herramienta_ejemplo": "Aplicación móvil con visión por computadora (CV) y LLM para planificación."
+  },
+  {
+    "id": 6,
+    "categoria": "Interacción Digital",
+    "idea_ia": "Bot de WhatsApp (o web) que actúa como *Help Desk* de primer nivel para equipos, respondiendo a preguntas frecuentes sobre procesos o sistemas internos.",
+    "herramienta_ejemplo": "Servicios de **LLM** (ej. Gemini Pro) integrados a través de un *middleware* de mensajería."
+  },
+  {
+    "id": 7,
+    "categoria": "Finanzas Personales",
+    "idea_ia": "Clasificación automática de movimientos bancarios y etiquetado de gastos para presupuestos, identificando anomalías o gastos innecesarios.",
+    "herramienta_ejemplo": "Script de Python que lee CSV bancarios y usa NLP básico para etiquetar."
+  },
+  {
+    "id": 8,
+    "categoria": "Creación de Contenido Web",
+    "idea_ia": "Generación de estructura HTML y código JavaScript básico para un *dashboard* o prototipo web a partir de una descripción en lenguaje natural.",
+    "herramienta_ejemplo": "Plataformas de *AI Coding* o extensiones de IDEs (ej. GitHub Copilot, uso de ChatGPT/Gemini)."
+  },
+  {
+    "id": 9,
+    "categoria": "Reuniones y Comunicación",
+    "idea_ia": "Transcripción automática y resumen de puntos clave y **acciones/responsables** de una reunión (minutas automáticas).",
+    "herramienta_ejemplo": "Herramientas de *Speech-to-Text* con procesamiento de lenguaje natural (NLP) posterior."
+  },
+  {
+    "id": 10,
+    "categoria": "Viajes y Logística Local (Córdoba)",
+    "idea_ia": "Recomendación de rutas y horarios óptimos para evitar tráfico en Córdoba Capital o para planificar viajes, considerando datos históricos de eventos/clima.",
+    "herramienta_ejemplo": "Google Maps API con modelos predictivos simples basados en Python."
+  }
+]

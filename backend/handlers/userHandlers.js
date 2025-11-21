@@ -15,61 +15,69 @@ const esquemaUser = Joi.object({
   email: Joi.string().email().required(),
 });
 
-const getUserHandler = (req, res) => {
+const getUserHandler = async (req, res) => {
   const { name } = req.query;
-  console.log("GET User Handler");
   try {
     if (name) {
-      const userByName = getUserByNameController(name);
+      const userByName = await getUserByNameController(name); 
       res.send(userByName);
     } else {
-      const allUsers = getAllUserController();
+      const allUsers = await getAllUserController(); 
       res.send(allUsers);
     }
   } catch (error) {
-    res.status(400).send({ error: "No hay usuarios" });
+    res.status(404).send({ error: error.message || "No hay usuarios" }); 
   }
 };
 
-const getUserByIdHandler = (req, res) => {
+const getUserByIdHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    const userById = getOneUserController(id);
-    res.send(userById);
+    const userById = await getOneUserController(id); 
+    
+    return res.send(userById);
+
   } catch (error) {
-    res.status(400).send({ error: "No se encontro el usuario" });
+
+    return res.status(404).send({ error: error.message || "No se encontro el usuario" });
   }
 };
 
-const createUserHandler = (req, res) => {
+const createUserHandler = async (req, res) => {
   console.log("Creando usuario UserHandlers");
-  //console.log("Body recibido:", req.body);
-  //console.log(esquemaUser);
   try {
     const { error } = esquemaUser.validate(req.body);
     if (error) {
       res.status(400).send(error.details[0].message);
     } else {
       const { name, userName, email } = req.body;
-      const newUser = createUserController(name, userName, email);
+      const newUser = await createUserController(name, userName, email); 
       res.status(201).send(newUser);
     }
   } catch (error) {
-    res.status(500).send({ error: "Faltan datos al usuario" });
+    res.status(400).send({ error: error.message || "Error al crear el usuario" }); 
   }
 };
 
-const putUserHandler = (req, res) => {
+const putUserHandler = async (req, res) => {
   const { name, userName, email } = req.body;
   const { id } = req.params;
-  const newUserData = updateUserController(id, name, userName, email);
-  res.send(newUserData);
+  try {
+    const newUserData = await updateUserController(id, name, userName, email);
+    res.send(newUserData);
+  } catch (error) {
+    res.status(404).send({ error: error.message || "Error al actualizar el usuario" });
+  }
 };
 
-const deleteUserHandler = (req, res) => {
+const deleteUserHandler = async (req, res) => {
   const { id } = req.params;
-  const deleteUser = deleteUserController(id);
-  res.send(deleteUser);
+  try {
+    const deleteUser = await deleteUserController(id);
+    res.send(deleteUser);
+  } catch (error) {
+    res.status(404).send({ error: error.message || "Error al eliminar el usuario" });
+  }
 };
 
 module.exports = {

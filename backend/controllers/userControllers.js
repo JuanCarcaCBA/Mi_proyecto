@@ -1,58 +1,62 @@
-//const {users} = require("../db/dataBase.js");
+// backend/controllers/userControllers.js - CORREGIDO Y ASÍNCRONO
 
-const users = require("../models/user");
-//const Sugerencia = require("../handlers/sugerciasHandlersDB");
+// 1. Renombramos la importación a UserModel para evitar conflictos.
+const UserModel = require("../models/user"); 
 
-
-
-const createUserController = (name, userName, email) => {
+// 2. REFECTORIZACIÓN: Usar Mongoose .create() en lugar de .push()
+const createUserController = async (name, userName, email) => { // Ahora es ASÍNCRONO
   console.log("User controler Body recibido");
-  //Prueba validacion
-  if (!name || !userName || !email) throw new Error();
+  
+  if (!name || !userName || !email) throw new Error("Faltan datos requeridos.");
 
-  //Valido mail
   if (!email.includes("@") || !email.includes(".")) {
     return { error: "El email no tiene un formato válido." };
   }
-  const id = users.length + 1;
-  const newUser = { id, name, userName, email };
-  users.push(newUser);
+
+  // Comprobar si existe antes de crear
+  const userExist = await UserModel.findOne({ email });
+  if (userExist) throw new Error("El email ya está registrado");
+
+  // Usamos .create() para insertar en la DB (el _id se genera solo)
+  const newUser = await UserModel.create({ name, userName, email });
+  
+  // Eliminamos la lógica de array (.length + 1 y .push())
   return newUser;
 };
 
-const getAllUserController = () => {
-    const users = users.find({});
-    return users;
+// 3. CORRECCIÓN DEL REFERENCEERROR
+const getAllUserController = async () => {
+    // Usamos 'allUsers' (variable local) y 'UserModel' (Modelo importado)
+    const allUsers = await UserModel.find({});
+    return allUsers;
 };
 
-const getUserByNameController = (name) => {
-  const userByName = users.filter((user) => user.name === name);
-  if (!userByName.length) throw new Error();
+
+// 4. REFECTORIZACIÓN: Usar Mongoose .find() y .findOne()
+const getUserByNameController = async (name) => { // Ahora es ASÍNCRONO
+  const userByName = await UserModel.find({ name: name }); // Buscar por nombre
+  if (!userByName.length) throw new Error("Usuario no encontrado por nombre");
   return userByName;
 }; 
 
-const getOneUserController = (id) => {
-  const user = users.find((user) => user.id == id);
-  if (!user) throw new Error();
-  return user || { error: "Usuario no encontrado" };
+const getOneUserController = async (id) => { 
+  const user = await UserModel.findById(id); 
+  
+  if (!user) throw new Error("Usuario no encontrado por ID");
+    return user.toObject(); 
+};
+const updateUserController = async (id, name, userName, email) => { // Ahora es ASÍNCRONO
+  // Usamos findByIdAndUpdate para eficiencia. {new: true} devuelve el doc actualizado.
+  const updatedUser = await UserModel.findByIdAndUpdate(id, { name, userName, email }, { new: true });
+  if (!updatedUser) return { error: "Usuario no encontrado para actualizar" };
+  return updatedUser;
 };
 
-const updateUserController = (id, name, userName, email) => {
-  const index = users.findIndex((user) => user.id == id);
-  if (index !== -1) {
-    users[index] = { id: Number(id), name, userName, email };
-    return users[index];
-  }
-  return { error: "Usuario no encontrado para actualizar" };
-};
-
-const deleteUserController = (id) => {
-  const index = users.findIndex((user) => user.id == id);
-  if (index !== -1) {
-    const deleted = users.splice(index, 1);
-    return deleted[0];
-  }
-  return { error: "Usuario no encontrado para eliminar" };
+const deleteUserController = async (id) => { // Ahora es ASÍNCRONO
+  // Usamos findByIdAndDelete para eficiencia.
+  const deleted = await UserModel.findByIdAndDelete(id);
+  if (!deleted) return { error: "Usuario no encontrado para eliminar" };
+  return deleted;
 };
 
 module.exports = {

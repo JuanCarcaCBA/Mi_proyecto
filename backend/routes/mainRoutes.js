@@ -6,7 +6,7 @@ const userRoutes = require("./userRoutes");
 const mainRoutes = Router();
 
 const { getSugerHandlerDB } = require("../handlers/sugerciasHandlersDB"); 
-
+const db_sugeRoutes = require ("./db_suge")
 const authRoutes = require("./authRoutes")
 const sugerenciasRoutes = require("./sugerenciasRoutes")
 //const sugeRoutes = require("./sugeRoutesDB");
@@ -16,6 +16,8 @@ mainRoutes.use("/auth", authRoutes);
 
 mainRoutes.use("/user", userRoutes);
 mainRoutes.use("/sugerencias", sugerenciasRoutes);
+
+mainRoutes.use("/suge_db", db_sugeRoutes);
 
 //mainRoutes.use("/post",postRoutes)
 
